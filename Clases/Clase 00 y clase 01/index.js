@@ -1,19 +1,19 @@
-//let nombre = 'Juan' 
-//let edad = 20
-//let bool = true
-//let array = ['a','b',10,false]
+// let nombre = 'Juan' 
+// let edad = 20
+// let bool = true
+// let array = ['a','b',10,false]
 
-// //Actividad de clase
+// Actividad de clase
 
-// // let nombre = 'Juan' 
-// // let edad = 20
-// // let precio = 500
-// // let series = ['Breaking bad','TWD']
+// let nombre = 'Juan' 
+// let edad = 20
+// let precio = 500
+// let series = ['Breaking bad','TWD']
 
-// // console.log(nombre,edad,precio,series);
-// // //edad = edad +1
-// // series.push('godless')
-// // console.log(nombre,edad,precio,series);
+// console.log(nombre,edad,precio,series);
+// edad = edad +1
+// series.push('godless')
+// console.log(nombre,edad,precio,series);
 
 // let objeto = {
 //     nombre: 'Juan', 
@@ -23,27 +23,38 @@
 // }
 
 // console.log(objeto);
-// //Const se puede utilizar en arrays, y poder modificar valores dentro del array
-// //Recomendacion: los arreglos, los objetos y las funciones tratar de definirlas con const
-// //Atajo para comentar varias líneas: ctrl + k + c
+
+// Atajo para comentar varias líneas: ctrl + k + c
+// Const se puede utilizar en arrays, y poder modificar valores dentro del array, esto se llama mutabilidad
+// Recomendacion: los arreglos, los objetos y las funciones tratar de definirlas con const
+// const valorx = 'Pepe'
+// valorx = 'Papa' //Esto explota
+// const array = []
+// array.push('Hola, ') //Esto si se puede hacer
+// array.push('como ')
+// array.push('estás?')
+// console.log(array);
+//Al hacer push no se reasigna el array
 
 // //Funciones
-
+//Sintaxis básica
 // function suma(num1,num2){
 //     const resultado = num1+num2
 //     return resultado
 // }
 // console.log(suma(2,3));
-// //Estructura flecha (Arrow function): se cambia el function por el => 
-// //Ventaja, si mi funcion se resuelve en una linea de codigo, se pueden evitar las llaves y el return
-
-// const resta = (num1,num2)=>{
+//Notación flecha (Arrow function): se cambia el function por el => 
+// const resta1 = (num1,num2)=>{
 //     const resultado = num1-num2
 //     return resultado
 // }
-// //const resta = (num1,num2)=> num1-num2
-// //Con retorno implícito
-// console.log(resta(2,3));
+// console.log(resta1(2,3));
+
+//Ventaja, si mi funcion se resuelve en una linea de codigo, se pueden evitar las llaves y el return
+//const resta2 = (num1,num2)=> num1-num2
+//Con retorno implícito
+//console.log(resta2(2,3));
+
 
 // //hands on lab
 // const mostrarLista = array =>{
@@ -58,11 +69,12 @@
 //         return 'No es un arreglo'
 //     }
 // }
+//Si hago un typeof de un array devuelve un object
 
 // console.log(mostrarLista([2,0,4,1,2]));
 
 //Clases
-//Las clases tienen un metodo default, el constructor
+//Las clases tienen un método default, el constructor
 // class Persona{
 //     //Atributos
 //     constructor(nombre,apellido,edad){
@@ -76,7 +88,7 @@
 //         return this.nombre
 //     }
 // }
-// const p1 = new Persona('Juan','Perez',20)
+// const p1 = new Persona('Max','Vers',20)
 // const p2 = new Persona('Checo','Perez',27)
 // console.log(p1);
 // console.log(p2.obtenerNombre);
