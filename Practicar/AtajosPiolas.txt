@@ -1,0 +1,5 @@
+Aatajos piolas
+fre→	forEach loop in ES6 syntax array.forEach(currentItem => {})
+nfn→	creates a named function const add = (params) => {}
+log→    console.log();
+con→	adds default constructor in the class constructor() {}
