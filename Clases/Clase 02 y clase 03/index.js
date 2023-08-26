@@ -103,3 +103,28 @@ console.log(numero ?? 10);
 //Variables/atributos y metodos privados dentro de clases
 //Estos se declaran con un # adelante
 //Se puede ver en el HandsOnLab03
+
+// ----- Segunda parte de la clase -----
+
+//Asíncrono
+console.log("Primer log");
+setTimeout(() => {
+    console.log("Log con timeout");
+}, 100); //Es independiente el tiempo q le asignemos, siempre imprime al final
+console.log("Último log");
+
+// Crear una función promesa
+function promesaFun(a,b){
+    return new Promise((resolve,reject)=>{
+        if (a===0||b===0) {
+            reject("Promesa rechazada por ingresar algun 0")
+        }
+        else {
+            resolve(a+b)
+        }
+    })
+}
+
+promesaFun(0,7)
+    .then(res=>console.log(res))
+    .catch(error=>console.log(error))
