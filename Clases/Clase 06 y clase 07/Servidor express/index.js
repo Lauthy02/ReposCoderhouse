@@ -26,7 +26,7 @@ const usuarios = [
 ]
 
 //Con esto defino con q ruta va a entrar a este get
-//En el buscador poner: http://localhost:8080/rutadefinidaenlosget
+//En el buscador o postman poner: http://localhost:8080/rutadefinidaenlosget
 //req es request y res es response 
 app.get('/',(req,res) =>{ //Esta se llama ruta raíz
     console.log(req)

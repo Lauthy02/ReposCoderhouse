@@ -1,0 +1,21 @@
+---- 1 Inicar proyecto ----
+    Ir a la ruta donde quiero mi proyecto
+    Crear una carpeta src y dentro crear un archivo app.js
+    Iniciar proyecto con npm init -y en la ruta donde quiero el poryecto y en la terminar de powershell
+    Esto me va a crear un package.json
+    Lo necesito porque express no es nativo de NodeJs, entonces necesito un package.json para gestionar las dependencias
+
+---- 2 Instalar ExpressJs ----
+    Poner en consola bash npm i express para instalar express. Esto siempre se utiliza a nivel de proyecto
+    Esto me va a crear una carpeta node_modules y un package-lock.json
+    Poner la carpeta node_modules en el .gitignore
+    
+---- 3 Estructurar el proyecto ----
+    En la carpeta src va a ir el código de nuestro proyecto
+    Para trabajar con el import tengo q ir al package.json y escribir "type": "module"
+
+---- 4 Empezar a codear ----
+    Importar en app.js ExpressJs
+    Definir un puerto de escucha
+    Para tener el servidor corriedo con nodemon tenemos q poner en la consola bash nodemon app.js
+
