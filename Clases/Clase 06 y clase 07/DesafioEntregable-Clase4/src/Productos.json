@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "titulo": "Talco",
+        "descripcion": "Polvo para pies",
+        "precio": 10,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    },
+    {
+        "id": 2,
+        "titulo": "Café cabrales clásico",
+        "descripcion": "Torrado",
+        "precio": 70000,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    },
+    {
+        "id": 3,
+        "titulo": "Banana",
+        "descripcion": "Fruta",
+        "precio": 10,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    },
+    {
+        "id": 4,
+        "titulo": "Manzana",
+        "descripcion": "Fruta",
+        "precio": 10,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    },
+    {
+        "id": 5,
+        "titulo": "Kiwi",
+        "descripcion": "Fruta",
+        "precio": 10,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    }
+]
