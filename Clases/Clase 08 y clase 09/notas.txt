@@ -1,0 +1,2 @@
+Dentro de express hay un encargado de todo el tema de rutas
+import {Router} from 'express'
