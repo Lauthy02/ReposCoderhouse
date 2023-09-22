@@ -7,55 +7,75 @@ class ProductManager {
     }
 
     async GetProducts() {
-        if (fs.existsSync(this.path)) {
-            const SavedProducts = await fs.promises.readFile(this.path, 'utf-8')
-            return JSON.parse(SavedProducts)
-        } else {
-            return []
+        try {
+            if (fs.existsSync(this.path)) {
+                const SavedProducts = await fs.promises.readFile(this.path, 'utf-8')
+                return JSON.parse(SavedProducts)
+            } else {
+                return []
+            }
+        } catch (error) {
+            return error
         }
     }
 
     async GetProductById(pid) {
-        const SavedProducts = await this.GetProducts()
-        const ProdAux = SavedProducts.find(u => u.id === pid)
-        return ProdAux
+        try {
+            const SavedProducts = await this.GetProducts()
+            const ProdAux = SavedProducts.find(u => u.id === pid)
+            return ProdAux
+        } catch (error) {
+            return error
+        }
     }
 
-    async AddProduct(product) {
-        const SavedProducts = await this.GetProducts()
-        let id
-        if (!SavedProducts.length) {
-            id = 1
-        } else {
-            id = SavedProducts[SavedProducts.length - 1].id + 1
+    async CreateProduct(product) {
+        try {
+            const SavedProducts = await this.GetProducts()
+            let ID_Product
+            if (!SavedProducts.length) {
+                ID_Product = 1
+            } else {
+                ID_Product = SavedProducts[SavedProducts.length - 1].ID_Product + 1
+            }
+            const NewProduct = { ID_Product, ...product }
+            SavedProducts.push(NewProduct)
+            await fs.promises.writeFile(this.path, JSON.stringify(SavedProducts))
+            return NewProduct
+        } catch (error) {
+            return error
         }
-        const NewProduct = { id, ...product }
-        SavedProducts.push(NewProduct)
-        await fs.promises.writeFile(this.path, JSON.stringify(SavedProducts))
-        return NewProduct
     }
 
     async EditProduct(pid, obj) {
-        const SavedProducts = await this.GetProducts()
-        const index = SavedProducts.findIndex(u => u.id === pid)
-        if (index === -1) {
-            return -1
+        try {
+            const SavedProducts = await this.GetProducts()
+            const index = SavedProducts.findIndex(u => u.id === pid)
+            if (index === -1) {
+                return -1
+            }
+            const Product = SavedProducts[index]
+            SavedProducts[index] = {...Product, ...obj}
+            await fs.promises.writeFile(this.path, JSON.stringify(SavedProducts))
+            return 1
+        } catch (error) {
+            return error   
         }
-        const Product = SavedProducts[index]
-        SavedProducts[index] = {...Product, ...obj}
-        await fs.promises.writeFile(this.path, JSON.stringify(SavedProducts))
-        return 1
     }
 
     async DeleteProduct(pid) {
-        const SavedProducts = await this.GetProducts()
-        const Product = SavedProducts.find(u=>u.id === pid)
-        if (!Product) {
-            return -1
+        try {
+            const SavedProducts = await this.GetProducts()
+            const Product = SavedProducts.find(u=>u.id === pid)
+            if (!Product) {
+                return -1
+            }
+            const SavedProductsAux = SavedProducts.filter(u => u.id !== pid)
+            await fs.promises.writeFile(this.path, JSON.stringify(SavedProductsAux))
+            return 1
+        } catch (error) {
+            return error
         }
-        const SavedProductsAux = SavedProducts.filter(u => u.id !== pid)
-        await fs.promises.writeFile(this.path, JSON.stringify(SavedProductsAux))
-        return 1
     }
 
     async DeleteFile() {
@@ -63,4 +83,4 @@ class ProductManager {
     }
 }
 
-export const productManager = new ProductManager('./Products.json')
+export const productManager = new ProductManager('./ProyectoFinal/1erEntrega/Products.json')

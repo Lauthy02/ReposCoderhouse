@@ -39,7 +39,7 @@ app.get('/api/products/:pid', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
     try {
-        const NewProduct = await productManager.AddProduct(req.body)
+        const NewProduct = await productManager.CreateProduct(req.body)
         res.status(200).json({ message: 'Product created', NewProduct })
     } catch (error) {
         res.status(500).json({ message: error })
