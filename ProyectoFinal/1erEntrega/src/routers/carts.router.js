@@ -30,7 +30,7 @@ router.get('/:cid', async (req, res) => {
     }
 })
 
-router.post('/',async (req,res) => {
+router.post('/', async (req, res) => {
     try {
         const NewCart = await cartManager.CreateCart(req.body)
         res.status(200).json({ message: 'Cart created', NewCart })
@@ -39,13 +39,19 @@ router.post('/',async (req,res) => {
     }
 })
 
-router.post('/:cid/products/:pid', async (req, res) => {
+router.post('/:cid/product/:pid', async (req, res) => {
+    const { cid } = req.params
+    const { pid } = req.params
     try {
-
+        const Answer = await cartManager.AddProductToCart(+cid, +pid)
+        if (Answer === -1) {
+            res.status(400).json({ message: 'Not added product to cart' })
+        } else {
+            res.status(200).json({ message: 'Added product to cart' })
+        }
     } catch (error) {
         res.status(500).json({ message: error })
     }
 })
-
 
 export default router
