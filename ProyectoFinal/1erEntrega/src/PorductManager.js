@@ -21,8 +21,8 @@ class ProductManager {
 
     async GetProductById(pid) {
         try {
-            const SavedProducts = await this.GetProducts()
-            const ProdAux = SavedProducts.find(u => u.id === pid)
+            const SavedProducts = await this.GetProducts({})
+            const ProdAux = SavedProducts.find(u => u.ID_Product === pid)
             return ProdAux
         } catch (error) {
             return error
@@ -50,7 +50,7 @@ class ProductManager {
     async EditProduct(pid, obj) {
         try {
             const SavedProducts = await this.GetProducts()
-            const index = SavedProducts.findIndex(u => u.id === pid)
+            const index = SavedProducts.findIndex(u => u.ID_Product === pid)
             if (index === -1) {
                 return -1
             }
@@ -66,11 +66,11 @@ class ProductManager {
     async DeleteProduct(pid) {
         try {
             const SavedProducts = await this.GetProducts()
-            const Product = SavedProducts.find(u=>u.id === pid)
+            const Product = SavedProducts.find(u=>u.ID_Product === pid)
             if (!Product) {
                 return -1
             }
-            const SavedProductsAux = SavedProducts.filter(u => u.id !== pid)
+            const SavedProductsAux = SavedProducts.filter(u => u.ID_Product !== pid)
             await fs.promises.writeFile(this.path, JSON.stringify(SavedProductsAux))
             return 1
         } catch (error) {
@@ -82,5 +82,5 @@ class ProductManager {
         await fs.promises.unlink(this.path)
     }
 }
-
-export const productManager = new ProductManager('./ProyectoFinal/1erEntrega/Products.json')
+//./ProyectoFinal/1erEntrega/Products.json
+export const productManager = new ProductManager('Products.json')

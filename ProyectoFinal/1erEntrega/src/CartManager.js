@@ -4,6 +4,7 @@ class CartManager {
 
     constructor(path) {
         this.path = path
+        this.productsList = []
     }
 
     async GetCarts(){
@@ -21,7 +22,7 @@ class CartManager {
 
     async GetCartById(cid){
         try {
-            const SavedCarts = await this.GetCarts()
+            const SavedCarts = await this.GetCarts({})
             const CartAux = SavedCarts.find(u=> u.ID_Cart === cid)
             return CartAux
         } catch (error) {
@@ -29,7 +30,7 @@ class CartManager {
         }
     }
 
-    async CreateCart(productsList){ //cart es un array de productos
+    async CreateCart(product){
         try {
             const SavedCarts = await this.GetCarts()
             let ID_Cart
@@ -38,7 +39,8 @@ class CartManager {
             } else {
                 ID_Cart = SavedCarts[SavedCarts.length - 1].ID_Cart+1
             }
-            const NewCart = {ID_Cart,...productsList}
+            this.productsList.push(product.ID_Product)
+            const NewCart = {ID_Cart,...this.productsList}
             SavedCarts.push(NewCart)
             await fs.promises.writeFile(this.path, JSON.stringify(SavedCarts))
             return NewCart
@@ -47,8 +49,8 @@ class CartManager {
         }
     }
 }
-
-export const cartManager = new CartManager('./ProyectoFinal/1erEntrega/Carts.json')
+//./ProyectoFinal/1erEntrega/Carts.json
+export const cartManager = new CartManager('Carts.json')
 
 //#region Pruebas
 //Instancio productos

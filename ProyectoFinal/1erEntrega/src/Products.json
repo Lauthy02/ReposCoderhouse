@@ -1,0 +1,20 @@
+[
+    {
+        "ID_Product": 1,
+        "titulo": "Azúcar",
+        "descripcion": "Endulzante",
+        "precio": 10,
+        "imagen": "Sin imagen",
+        "codigo": "AAA001",
+        "stock": 10
+    },
+    {
+        "ID_Product": 2,
+        "titulo": "Café",
+        "descripcion": "Café torrado",
+        "precio": 20,
+        "imagen": "Sin imagen",
+        "codigo": "AAA002",
+        "stock": 10
+    }
+]

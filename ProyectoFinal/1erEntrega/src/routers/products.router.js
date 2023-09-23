@@ -1,6 +1,9 @@
-import { productManager } from "../src/PorductManager.js";
+import { Router } from 'express'
+import { productManager } from "../PorductManager.js";
 
-app.get('/api/products', async (req, res) => {
+const router = Router()
+
+router.get('/', async (req, res) => {
     const { limit } = req.query
     try {
         const AllProducts = await productManager.GetProducts()
@@ -13,9 +16,9 @@ app.get('/api/products', async (req, res) => {
                     const Product = AllProducts[a];
                     PorductsLimit.push(Product)
                 }
-                res.status(200).json({ message: 'Product/s found with the sent limit', PorductsLimit })
+                res.status(200).json({ message: 'Products found with the sent limit', PorductsLimit })
             } else {
-                res.status(200).json({ message: 'Product/s found', AllProducts })
+                res.status(200).json({ message: 'Products found', AllProducts })
             }
         }
     } catch (error) {
@@ -23,7 +26,7 @@ app.get('/api/products', async (req, res) => {
     }
 })
 
-app.get('/api/products/:pid', async (req, res) => {
+router.get('/:pid', async (req, res) => {
     const { pid } = req.params
     try {
         const Product = await productManager.GetProductById(+pid)
@@ -37,7 +40,7 @@ app.get('/api/products/:pid', async (req, res) => {
     }
 })
 
-app.post('/api/products', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const NewProduct = await productManager.CreateProduct(req.body)
         res.status(200).json({ message: 'Product created', NewProduct })
@@ -46,7 +49,7 @@ app.post('/api/products', async (req, res) => {
     }
 })
 
-app.put('/api/products/:pid', async (req, res) => {
+router.put('/:pid', async (req, res) => {
     const { pid } = req.params
     try {
         const Answer = await productManager.EditProduct(+pid, req.body)
@@ -60,7 +63,7 @@ app.put('/api/products/:pid', async (req, res) => {
     }
 })
 
-app.delete('/api/products/:pid', async (req, res) => {
+router.delete('/:pid', async (req, res) => {
     const { pid } = req.params
     try {
         const Answer = await productManager.DeleteProduct(+pid)
@@ -73,3 +76,5 @@ app.delete('/api/products/:pid', async (req, res) => {
         res.status(500).json({ message: error })
     }
 })
+
+export default router
