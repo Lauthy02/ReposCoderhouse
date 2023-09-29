@@ -1,6 +1,0 @@
-Web sokets
----- Proyecto ----
-npm init -y -Listo
-npm i express -Listo
-npm i express-handlebars -Listo
-npm i socket.io -Listo

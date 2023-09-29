@@ -1,0 +1,27 @@
+Web sokets
+---- Proyecto ----
+npm init -y -Listo
+npm i express -Listo
+npm i express-handlebars -Listo
+npm i socket.io -Listo
+
+En la clase hicimos una aplicación chat
+
+Para desplegar el chat usamos glitch https://glitch.com
+
+Glitch se puede conectar directamente con GitHub para hacer despliegues más rápidos
+
+Pero en hay q cambiar esto en el packaje.json
+--- Antes
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+--- Despues
+  "scripts": {
+    "start": "node src/app.js"
+  },
+
+Y agregarle al final 
+  "engines": {
+    "node": "16.x"
+  }
