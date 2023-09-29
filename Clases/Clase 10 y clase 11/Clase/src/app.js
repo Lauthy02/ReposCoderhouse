@@ -1,20 +1,43 @@
 import express from 'express'
-import {engine} from 'express-handlebars'
+import handlebars from 'express-handlebars'
 import viewsRouter from './routes/views.router.js'
-import {__dirname} from './utils.js'
-import {server} from 'wuebokets'
+import { __dirname } from './utils.js'
+import { Server } from 'socket.io'
 
-const port = 8080;
+const app = express()
 
-const httpServer = app.listen(port,()=>{
-    console.log(`Esuchando puerto ${port}`);
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static(__dirname + '/public'))
+
+//handlebars
+app.engine('handlebars', handlebars.engine())
+app.set('views', __dirname + '/views')
+app.set('view engine', 'handlebars')
+
+app.use('/', viewsRouter)
+
+const port = 8080
+const httpServer = app.listen(port, () => {
+    console.log(`Esuchando puerto ${port}`)
 })
 
 //websoket - server
-const soketServer = new Server(httpServer)
+const socketServer = new Server(httpServer)
 
 //connection - disconnect
-soketServer.on('connection',(soket)=>{
-    console.log(`Cliente conectado ${soket.id}`);
-    soket.on()
+const names = []
+socketServer.on('connection', (socket) => {
+    console.log(`Cliente conectado: ${socket.id}`)
+    socket.on('disconnect', () => {
+        console.log(`Cliente desconectado: ${socket.id}`)
+    })
+
+    socket.on('firstEvent_message',(info) =>{
+        names.push(info)
+        console.log(`Array de nombres: ${names}`)
+        socket.emit('secondEvent',names) //Esto envía un evento a 1 cliente
+        //socketServer.emit('secondEvent',names) Esto envía un aveneto a todos los clientes conectados
+        //socket.broadcast.emit('secondEvent',names) Esto le manda un evento a todos los clientes a excepción de sí mismo
+    })
 })

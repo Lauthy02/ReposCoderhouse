@@ -1,0 +1,2 @@
+Soket.io es una dependenca externa q nos permitirá trabajar con web sokets
+npm install socket.io
