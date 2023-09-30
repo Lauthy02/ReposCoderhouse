@@ -1,32 +1,33 @@
 const socketClient = io()
 
 const formInputs = document.getElementById('form-inputs')
-
 //#region Product data
-const ftitle = document.getElementById('inputTitle').value
-const fdescrip = document.getElementById('inputDescrip').value
-const fprice = document.getElementById('inputPrice').value
-const fthumbnail = document.getElementById('inputThumbnail').value
-const fcode = document.getElementById('inputCode').value
-const fstock = document.getElementById('inputStock').value
+const ftitle = document.getElementById('inputTitle')
+const fdescrip = document.getElementById('inputDescrip')
+const fprice = document.getElementById('inputPrice')
+const fcode = document.getElementById('inputCode')
+const fstock = document.getElementById('inputStock')
 //#endregion
 
 PonerDatos()
 
-formInputs.addEventListener('submit',e => {
+formInputs.onsubmit = (e) =>{
     e.preventDefault()
-    
-    console.log(fname.value);
-    console.log(fprice.value);
-    
-    socketClient.emit('eventClient:NewProduct', {
-        title: fname.value,
-        description: "",
+    console.log(ftitle)
+    console.log(fprice)
+    const formProduct = {
+        title: ftitle.value,
+        description: fdescrip.value,
         price: fprice.value,
         thumbnail: "Without image",
-        code: "",
-        stock: 777
-    })
+        code: fcode.value,
+        stock: fstock.value
+    }
+    socketClient.emit('EventClient:NewProduct',formProduct)
+}
+
+socketClient.on('EventServer:PorductCreated', a => {
+    PonerDatos()
 })
 
 function PonerDatos(){
@@ -42,10 +43,18 @@ function PonerDatos(){
     const mostrarData = (data) => {
         console.log(data)
         const ARRAY = data.AllProducts
-        console.log(ARRAY);
+        console.log(ARRAY)
         let body = ''
         for (let i = 0; i < ARRAY.length; i++) {
-            body += `<tr><td>${ARRAY[i].ID_Product}</td><td>${ARRAY[i].title}</td><td>${ARRAY[i].price}</td></tr>`
+            body += `<tr>
+                <td>${ARRAY[i].ID_Product}</td>
+                <td>${ARRAY[i].title}</td>
+                <td>${ARRAY[i].description}</td>
+                <td>${ARRAY[i].price}</td>
+                <td>${ARRAY[i].thumbnail}</td>
+                <td>${ARRAY[i].code}</td>
+                <td>${ARRAY[i].stock}</td>
+            </tr>`
         } 
         info.innerHTML = body
     }

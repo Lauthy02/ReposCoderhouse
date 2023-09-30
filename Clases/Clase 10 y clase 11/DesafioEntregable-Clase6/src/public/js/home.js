@@ -13,7 +13,15 @@ const mostrarData = (data) => {
     console.log(ARRAY);
     let body = ''
     for (let i = 0; i < ARRAY.length; i++) {
-        body += `<tr><td>${ARRAY[i].ID_Product}</td><td>${ARRAY[i].title}</td><td>${ARRAY[i].price}</td></tr>`
+        body += `<tr>
+            <td>${ARRAY[i].ID_Product}</td>
+            <td>${ARRAY[i].title}</td>
+            <td>${ARRAY[i].description}</td>
+            <td>${ARRAY[i].price}</td>
+            <td>${ARRAY[i].thumbnail}</td>
+            <td>${ARRAY[i].code}</td>
+            <td>${ARRAY[i].stock}</td>
+        </tr>`
     } 
     info.innerHTML = body
 }

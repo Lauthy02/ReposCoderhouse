@@ -5,6 +5,7 @@ import productsRouter from './routes/products.router.js'
 import viewsRouter from './routes/views.router.js'
 import { __dirname } from './utils.js'
 import { Server } from 'socket.io'
+import { productManager } from './managers/porducts.manager.js'
 //#endregion
 
 const app = express()
@@ -35,7 +36,9 @@ socketServer.on('connection', (socket) => {
         console.log(`Client disconnected: ${socket.id}`)
     })
 
-    socket.on('eventClient:NewProduct', data => {
-        console.log(data);
+    socket.on('EventClient:NewProduct', async (product) => {
+        console.log(product);
+        await productManager.CreateProduct(product)
+        socket.emit('EventServer:PorductCreated')
     })
 })
