@@ -82,5 +82,5 @@ class ProductManager {
         await fs.promises.unlink(this.path)
     }
 }
-//./ProyectoFinal/1erEntrega/Products.json
-export const productManager = new ProductManager('Products.json')
+
+export const productManager = new ProductManager('products.json')

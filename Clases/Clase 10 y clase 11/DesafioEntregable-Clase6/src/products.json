@@ -1,0 +1,29 @@
+[
+    {
+        "ID_Product": 1,
+        "title": "Café",
+        "description": "Café torrado",
+        "price": 20,
+        "thumbnail": "Without image",
+        "code": "AAA001",
+        "stock": 10
+    },
+    {
+        "ID_Product": 2,
+        "title": "Sal",
+        "description": "Sal de mesa",
+        "price": 20,
+        "thumbnail": "Without image",
+        "code": "AAA001",
+        "stock": 10
+    },
+    {
+        "ID_Product": 3,
+        "title": "Azúcar",
+        "description": "Azúcar común tipo A",
+        "price": 20,
+        "thumbnail": "Without image",
+        "code": "AAA001",
+        "stock": 10
+    }
+]

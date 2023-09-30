@@ -1,9 +1,11 @@
+//#region Imports
 import express from 'express'
 import handlebars from 'express-handlebars'
 import productsRouter from './routes/products.router.js'
-import realtimeproductsRouter from './routes/realtimeproducts.router.js'
+import viewsRouter from './routes/views.router.js'
 import { __dirname } from './utils.js'
 import { Server } from 'socket.io'
+//#endregion
 
 const app = express()
 
@@ -15,19 +17,21 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 
-app.use('/api/', productsRouter)
-app.use('/api/realtimeproducts/', realtimeproductsRouter)
+//#region Routes
+app.use('/api/products', productsRouter)
+app.use('/', viewsRouter)
+//#endregion
 
 const port = 8080
 const httpServer = app.listen(port, () => {
-    console.log(`Esuchando puerto ${port}`)
+    console.log(`Listening on port ${port}`)
 })
 
 const socketServer = new Server(httpServer)
 
 socketServer.on('connection', (socket) => {
-    console.log(`Cliente conectado: ${socket.id}`)
+    console.log(`Client connected: ${socket.id}`)
     socket.on('disconnect', () => {
-        console.log(`Cliente desconectado: ${socket.id}`)
+        console.log(`Client disconnected: ${socket.id}`)
     })
 })
