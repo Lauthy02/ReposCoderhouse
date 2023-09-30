@@ -1,0 +1,9 @@
+En la consola escribir mongo esto inicia la bd
+show dbs muestra la lista de las bds
+use <nombre> cra una bd
+db.createCollection(nombre) Crea una coleccion
+
+show collections muestra las colecciones de la bd
+db.createCollection(users)
+bd.users.inserOne({firstName:"juan",lasName:"alonso"})
+bd.users.inserMany([{firstName:"Fernando",lasName:"Alonso"},{firstName:"Max",lasName:"Verstappen"}])
