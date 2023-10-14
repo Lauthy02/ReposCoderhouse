@@ -1,3 +1,6 @@
+Solo vimos mongo, no código
+
+
 En la consola escribir mongo esto inicia la bd
 show dbs muestra la lista de las bds
 use <nombre> cra una bd
