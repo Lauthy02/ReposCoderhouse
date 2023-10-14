@@ -1,10 +1,7 @@
 import express from "express"
 import { __dirname } from "./utils.js"
-import handebars from "express-handlebars"
+import handlebars from "express-handlebars"
 import "./database/config.database.js"
-
-import { studentsManager } from "./students.manager.js"
-
 
 const port = 8080
 const app = express()
@@ -13,8 +10,8 @@ app.use(express.json)
 app.use(express.urlencoded({ extended: true }))
 
 //Handlebars
-app.engine("handlebars",handlebars.engine())
-app.set("view engine","handlebars")
+app.engine("handlebars", handlebars.engine())
+app.set("view engine", "handlebars")
 app.set("views", __dirname + "/views")
 
 
