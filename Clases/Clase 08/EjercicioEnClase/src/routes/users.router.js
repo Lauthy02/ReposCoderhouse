@@ -1,6 +1,5 @@
 import { Router } from "express"
 import { usersManager } from '../managers/users.manager.js';
-import { create } from "express-handlebars";
 
 const router = Router()
 
