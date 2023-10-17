@@ -2,11 +2,11 @@ import express from 'express'
 import { Server } from 'socket.io'
 import handlebars from 'express-handlebars'
 
-import "./database/config.database.js"
+import './database/config.database.js'
 import { __dirname } from './utils.js'
 import viewsRouter from './routes/views.router.js'
+import productsRouter from './routes/products.router.js'
 import productsManager from './managers/products.manager.js'
-import cartsManager from "./managers/carts.manager.js"
 
 const port = 8080
 const app = express()
@@ -20,7 +20,8 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 
 app.use("/",viewsRouter)
-//app.use("/api/products",productsRouter)
+app.use("/api/products",productsRouter)
+//app.use("/api/carts",cartsRouter)
 
 const httpServer = app.listen(port, () => {
     console.log(`Listening on port ${port}`)
@@ -36,10 +37,6 @@ socketServer.on('connection', (socket) => {
 
     socket.on('EventClientProducts:NewProduct', async (product) => {
         await productsManager.CreateOne(product)
-        console.log(product);
-        const all = productsManager.FindAll()
-        console.log(all);
-        //Me quedé acá, tengo q hacer que lea de la bd y lo ponga en la grilla
-        socket.emit('EventServer:PorductCreated',all)
+        socket.emit('EventServerProducts:PorductCreated')
     })
 })

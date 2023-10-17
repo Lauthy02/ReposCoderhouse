@@ -11,10 +11,11 @@ const productsSchema = new Schema({
     },
     stock: {
         type: Number,
-        default: 0
+        required: true
     }, 
     description: {
         type: String,
+        default: "Without description"
     },
 })
 
