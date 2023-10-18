@@ -1,10 +1,4 @@
-const socketClient = io()
-
-const formInputs = document.getElementById('form-inputs')
-const ftitle = document.getElementById('inputName')
-const fprice = document.getElementById('inputPrice')
-const fstock = document.getElementById('inputStock')
-const fdescrip = document.getElementById('inputDescrip')
+//const socketClient = io()
 
 PonerDatos()
 
@@ -23,10 +17,8 @@ function PonerDatos(){
         let body = ''
         for (let i = 0; i < ARRAY.length; i++) {
             body += `<tr>
-                <td>${ARRAY[i]._id}</td>
                 <td>${ARRAY[i].name}</td>
                 <td>${ARRAY[i].price}</td>
-                <td>${ARRAY[i].stock}</td>
                 <td>${ARRAY[i].description}</td>
             </tr>`
         } 

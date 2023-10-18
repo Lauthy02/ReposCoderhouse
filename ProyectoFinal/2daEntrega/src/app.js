@@ -4,8 +4,11 @@ import handlebars from 'express-handlebars'
 
 import './database/config.database.js'
 import { __dirname } from './utils.js'
-import viewsRouter from './routes/views.router.js'
+
+import productsViewsRouter from './routes/products.views.router.js'
 import productsRouter from './routes/products.router.js'
+import cartsViewsRouter from './routes/carts.views.router.js'
+import cartsRouter from './routes/carts.router.js'
 import productsManager from './managers/products.manager.js'
 
 const port = 8080
@@ -19,9 +22,10 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 
-app.use("/",viewsRouter)
+app.use("/products",productsViewsRouter)
 app.use("/api/products",productsRouter)
-//app.use("/api/carts",cartsRouter)
+app.use("/carts",cartsViewsRouter)
+app.use("/api/carts",cartsRouter)
 
 const httpServer = app.listen(port, () => {
     console.log(`Listening on port ${port}`)

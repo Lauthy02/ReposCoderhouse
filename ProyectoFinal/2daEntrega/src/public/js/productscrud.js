@@ -33,12 +33,20 @@ formInputs.onsubmit = (e) =>{
     }
 }
 
-socketClient.on('EventServerProducts:PorductCreated', a => {
+socketClient.on('EventServerProducts:PorductCreated', () => {
     //console.log("Estoy en evento ProductCreated") //Este log se ve en la consola del buscador
+    LimpiarElementos()
     PonerDatos()
 })
 
-function PonerDatos(){
+function LimpiarElementos() {
+    fname.value = ''
+    fprice.value = ''
+    fstock.value = ''
+    fdescrip.value = ''
+}
+
+function PonerDatos() {
     let url = "http://localhost:8080/api/products"
 
     const data = document.getElementById('data')
