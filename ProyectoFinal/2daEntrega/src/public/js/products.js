@@ -3,7 +3,7 @@
 PonerDatos()
 
 function PonerDatos(){
-    let url = "http://localhost:8080/api/products"
+    let url = "http://localhost:8080/api/products/"
 
     const data = document.getElementById('data')
     
@@ -13,7 +13,7 @@ function PonerDatos(){
         .catch(error => console.log(error))
 
     const mostrarInfo = (info) => {
-        const ARRAY = info.products //info.nombredelarray
+        const ARRAY = info.products.docs //info.nombredelarray
         let body = ''
         for (let i = 0; i < ARRAY.length; i++) {
             body += `<tr>

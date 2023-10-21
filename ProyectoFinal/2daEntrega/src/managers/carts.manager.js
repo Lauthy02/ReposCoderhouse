@@ -5,6 +5,10 @@ class CartsManager extends BasicManager {
     constructor(){
         super(cartsModel)
     }
+
+    async DeleteOneProdOfTheCart(cartId,prodId){
+        
+    }
 }
 
 const cartsManager = new CartsManager()

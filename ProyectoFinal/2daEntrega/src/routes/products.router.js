@@ -3,11 +3,13 @@ import productsManager from "../managers/products.manager.js"
 
 const router = Router()
 
+// api/products
 // Get/Obtener
-router.get("/", async (req, res) => {
+router.get("/", async (req, res) => { //?sort=asc&limit=4&page=1
     try {
-        const Products = await productsManager.FindAll()
-        res.status(200).json({ message: "Products found", products: Products })
+        //const Products = await productsManager.FindAll(req.query)
+        const Products = await productsManager.Find(req.query)
+        res.status(200).json({ message: "Products found", response: Products })
     } catch (err) {
         res.status(500).json({ error: err.message })
     }
