@@ -107,7 +107,7 @@ function PutData() {
         .catch(error => console.log(error))
 
     const ShowInfo = (info) => {
-        const ARRAY = info.products.docs
+        const ARRAY = info.response.products
         ARRAY.forEach(prod => {
             resultados += `
                             <tr>
