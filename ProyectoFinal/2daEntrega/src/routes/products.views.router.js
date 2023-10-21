@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/crud", (req, res) => {
-    res.render("productsCRUD")
+    res.render("CRUDProducts")
 })
 
 export default router
