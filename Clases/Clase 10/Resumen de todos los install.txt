@@ -1,0 +1,12 @@
+nodemon - esta instalado de forma global, para desarrollo
+
+socket.io
+
+express
+express-handlebars
+mongoose
+mongoose-paginate-v2
+cookie-pareser
+
+npm init -y
+npm i express express-handlebars mongoose mongoose-paginate-v2 cookie-parser
