@@ -6,7 +6,9 @@ express
 express-handlebars
 mongoose
 mongoose-paginate-v2
-cookie-pareser
+cookie-parser
+express-session
+connect-mongo
 
 npm init -y
-npm i express express-handlebars mongoose mongoose-paginate-v2 cookie-parser
+npm i express express-handlebars mongoose mongoose-paginate-v2 cookie-parser connect-mongo
