@@ -5,7 +5,9 @@ import session from "express-session"
 import mongoStore from "connect-mongo"
 
 import { __dirname } from './utils.js'
-//import viewsRouter from "./routes/views.router.js"
+import viewsRouter from "./routes/views.router.js"
+import usersRouter from "./routes/users.router.js"
+import productsRouter from "./routes/products.router.js"
 import './database/config.database.js'
 
 const port = 8080
@@ -24,7 +26,7 @@ app.use(session({
         maxAge: 60*60*1000,
     },
     store: new mongoStore({
-        mongoUrl: "mongodb+srv://lautarorojas02:cBDGJeojRgP3XWMJ@cluster0.s9xtjpd.mongodb.net/testSession?retryWrites=true&w=majority",
+        mongoUrl: "mongodb+srv://lautarorojas02:cBDGJeojRgP3XWMJ@cluster0.s9xtjpd.mongodb.net/EntregableC10?retryWrites=true&w=majority",
     })
 }))
 
@@ -35,7 +37,8 @@ app.set('view engine', 'handlebars')
 
 //routes
 app.use("/",viewsRouter)
-//app.use("/api/users",usersRouter)
+app.use("/api/users",usersRouter)
+app.use("/api/products",productsRouter)
 
 const httpServer = app.listen(port, () => {
     console.log(`Listening on port ${port}`)

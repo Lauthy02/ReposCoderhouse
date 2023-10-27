@@ -9,6 +9,7 @@ mongoose-paginate-v2
 cookie-parser
 express-session
 connect-mongo
+bcrypt
 
 npm init -y
 npm i express express-handlebars mongoose mongoose-paginate-v2 cookie-parser connect-mongo
