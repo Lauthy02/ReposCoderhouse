@@ -7,15 +7,15 @@ const router = Router()
 
 //#region login y signup manual
 
-router.get("/:idUser", async (req, res) => {
-    try {
-        const { idUser } = req.params
-        const user = await usersManager.FindById(idUser)
-        res.status(200).json({ message: "user found", user })
-    } catch (error) {
-        res.status(400).json({ message: "user not found", error })
-    }
-})
+// router.get("/:idUser", async (req, res) => {
+//     try {
+//         const { idUser } = req.params
+//         const user = await usersManager.FindById(idUser)
+//         res.status(200).json({ message: "user found", user })
+//     } catch (error) {
+//         res.status(400).json({ message: "user not found", error })
+//     }
+// })
 
 // router.post("/login", async (req, res) => {
 //     const { password, email } = req.body
