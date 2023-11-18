@@ -4,7 +4,6 @@ import { compareData, hashData } from "../utils.js"
 
 const router = Router()
 
-//mongo
 router.post("/login", async (req, res) => {
     const { password, email } = req.body
     const userDb = await usersManager.FindByEmail(email)
