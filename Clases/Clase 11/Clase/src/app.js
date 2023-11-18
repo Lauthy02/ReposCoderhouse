@@ -8,6 +8,7 @@ import handlebars from "express-handlebars"
 import { __dirname } from './utils.js'
 import viewsRouter from "./routes/views.router.js"
 import usersRouter from "./routes/users.router.js"
+import sessionsRouter from "./routes/session.router.js"
 import './database/config.database.js'
 import "./passport.js"
 
@@ -40,6 +41,7 @@ app.use(passport.session())
 //routes
 app.use("/",viewsRouter)
 app.use("/api/users",usersRouter)
+app.use("/api/sessions",sessionsRouter)
 
 const httpServer = app.listen(port, () => {
     console.log(`Listening on port ${port}`)
