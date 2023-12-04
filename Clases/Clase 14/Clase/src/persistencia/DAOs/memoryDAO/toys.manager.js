@@ -20,4 +20,4 @@ class ToysManager {
     }
 }
 
-export const toysManager = new ToysManager()
+//export const toysManager = new ToysManager()

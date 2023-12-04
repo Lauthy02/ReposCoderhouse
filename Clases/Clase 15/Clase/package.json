@@ -8,14 +8,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
     "dev:memory": "nodemon src/app.js MEMORY",
-    "dev:file": "nodemon src/app.js FILE"
+    "dev:file": "nodemon src/app.js FILE",
+    "dev:mongo": "nodemon src/app.js MONGO"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.2"
   }
 }
