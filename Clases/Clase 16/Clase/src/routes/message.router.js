@@ -16,4 +16,16 @@ router.get("/", async(req, res) => {
     res.send("Message sent")
 })
 
+router.post("/", async(req, res) => {
+    const {firstName, lastName, email, message} = req.body
+    const options = {
+        from: "lautaro.rojas02@gmail.com",
+        to: email,
+        subject: message,
+        text: `Thank you for contacting us ${firstName} ${lastName}!`,
+    }
+    await transporter.sendMail(options)
+    res.send("Message sent")
+})
+
 export default router
