@@ -1,0 +1,1 @@
+npm i express mongoose dotenv bcrypt mongoose-paginate-v2
